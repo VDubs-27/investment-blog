@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Navigation({ onButtonClick, onSearch }) {
+export default function Navigation({ onButtonClick, onSearch, onHome }) {
 
     const [ query, setQuery ] = React.useState("");
 
@@ -21,7 +21,7 @@ export default function Navigation({ onButtonClick, onSearch }) {
                 </div>
                 <div className="secondary-nav-container">
                     <a onClick={onButtonClick} className="secondary-nav-item">
-                        <button>VIEW ALL ARTICLES</button>
+                        <button onClick={onHome}>VIEW ALL ARTICLES</button>
                     </a>
                 </div>
             </div>

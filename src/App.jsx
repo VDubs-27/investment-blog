@@ -15,6 +15,12 @@ function App() {
   const [ searchTerm, setSearchTerm ] = React.useState("");
   const [ anyArticles, setAnyArticles ] = React.useState(true);
 
+  function goHome() {
+    setCurrentArticle(null);
+    setShowContactModal(false);
+    setSearchTerm("");
+  }
+
   function handleContactClick() {
     setCurrentArticle(null);
     setShowContactModal(true);
@@ -76,9 +82,14 @@ function App() {
 
   return (
     <>
-      <Header />
-      <Navigation onButtonClick={handleViewAllArticles} onSearch={handleSearch}/>
-      {!anyArticles && <p>No articles found.</p>}
+      <Header 
+        onHome={goHome}/>
+      <Navigation onButtonClick={handleViewAllArticles} onSearch={handleSearch} 
+        onHome={goHome}/>
+      {!anyArticles && !showContactModal && currentArticle == null && <div className="no-articles">
+        <h3>No articles found.</h3>
+        <p>🔎 Try another search term 🔎</p>
+      </div>}
       <div className="catalogue">
         {!showContactModal && currentArticle == null && articlesList}
       </div>

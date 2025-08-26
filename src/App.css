@@ -23,6 +23,18 @@ header {
   align-items: center;
 }
 
+.logo {
+  /*font-family: 'Playfair Display', serif;*/
+  transform: scale(1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.logo:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  transition: transform 0.2s ease-in-out;
+}
+
 .sub-nav {
   display: flex;
   justify-content: space-between;
@@ -99,6 +111,15 @@ header {
   color: #000000;
   transform: scale(1.1);
   cursor: pointer;
+}
+
+.no-articles {
+  text-align: center;
+  justify-content: center;
+  color: #6b7280;
+  font-weight: 600;
+  padding: 100px;
+  margin-top: 50px;
 }
 
 .catalogue {
