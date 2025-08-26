@@ -13,6 +13,7 @@ function App() {
   const [currentArticle, setCurrentArticle] = React.useState(null);
   const [showContactModal, setShowContactModal] = React.useState(false);
   const [ searchTerm, setSearchTerm ] = React.useState("");
+  const [ anyArticles, setAnyArticles ] = React.useState(true);
 
   function handleContactClick() {
     setCurrentArticle(null);
@@ -68,11 +69,16 @@ function App() {
       />
     )
   });
+  
+  React.useEffect(() => {
+    setAnyArticles(filteredArticles.length > 0);
+  }, [filteredArticles]);
 
   return (
     <>
       <Header />
       <Navigation onButtonClick={handleViewAllArticles} onSearch={handleSearch}/>
+      {!anyArticles && <p>No articles found.</p>}
       <div className="catalogue">
         {!showContactModal && currentArticle == null && articlesList}
       </div>

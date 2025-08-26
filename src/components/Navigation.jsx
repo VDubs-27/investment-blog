@@ -16,8 +16,8 @@ export default function Navigation({ onButtonClick, onSearch }) {
                         <input type="text" placeholder="Search for articles..." className="search-input"
                         value={query}
                         onChange={(e) => setQuery(e.target.value)}/>
+                    <button type="submit" className="search-button">Search</button>
                     </form>
-                    <button type="submit" onClick={onSearch} className="search-button">Search</button>
                 </div>
                 <div className="secondary-nav-container">
                     <a onClick={onButtonClick} className="secondary-nav-item">
