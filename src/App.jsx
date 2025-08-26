@@ -12,6 +12,7 @@ function App() {
 
   const [currentArticle, setCurrentArticle] = React.useState(null);
   const [showContactModal, setShowContactModal] = React.useState(false);
+  const [ searchTerm, setSearchTerm ] = React.useState("");
 
   function handleContactClick() {
     setCurrentArticle(null);
@@ -37,7 +38,23 @@ function App() {
     setShowContactModal(false);
   }
 
-  const articlesList = articles.map((article) => {
+  function handleSearch(searchTerm) {
+    setSearchTerm(searchTerm);
+    setCurrentArticle(null);
+    setShowContactModal(false);
+  }
+
+  const filteredArticles = articles.filter(article => {
+    return (
+      searchTerm === "" ||
+      article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      article.content.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      article.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      article.author.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  });
+
+  const articlesList = filteredArticles.map((article) => {
     return (
       <Card
         key={article.id}
@@ -55,7 +72,7 @@ function App() {
   return (
     <>
       <Header />
-      <Navigation onButtonClick={handleViewAllArticles}/>
+      <Navigation onButtonClick={handleViewAllArticles} onSearch={handleSearch}/>
       <div className="catalogue">
         {!showContactModal && currentArticle == null && articlesList}
       </div>
