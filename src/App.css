@@ -23,6 +23,43 @@ header {
   align-items: center;
 }
 
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+/* Rotating words animation */
+.words-container {
+  display: inline-block;
+  height: 2.8rem;
+  overflow: hidden;
+  vertical-align: middle;
+  position: relative;
+}
+
+.word-list {
+  display: flex;
+  flex-direction: column;
+  animation: slideWords 8s infinite;
+}
+
+.word-list span {
+  font-weight: bold;
+  height: 2.8rem;
+  line-height: 2.8rem;
+  display: block;
+  text-align: right;
+  margin-right: 5px;
+}
+
+@keyframes slideWords {
+  0%, 20% { transform: translateY(0); }
+  25%, 45% { transform: translateY(-2.8rem); }
+  50%, 70% { transform: translateY(-5.6rem); }
+  75%, 95% { transform: translateY(-8.4rem); }
+  100% { transform: translateY(0); }
+}
+
 .logo {
   /*font-family: 'Playfair Display', serif;*/
   transform: scale(1);
